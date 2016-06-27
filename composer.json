@@ -1,5 +1,7 @@
 {
     "name": "sergiors/pipeline",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Sérgio Rafael Siqueira",

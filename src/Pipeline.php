@@ -7,18 +7,34 @@ namespace Sergiors\Pipeline;
  */
 final class Pipeline
 {
+    /**
+     * @var callable[]
+     */
     private $callbacks;
 
+    /**
+     * @param array $callbacks
+     */
     public function __construct(array $callbacks = [])
     {
         $this->callbacks = array_filter($callbacks, 'is_callable');
     }
 
+    /**
+     * @param callable $callback
+     *
+     * @return Pipeline
+     */
     public function pipe(callable $callback)
     {
         return new self(array_merge($this->callbacks, [$callback]));
     }
 
+    /**
+     * @param mixed $payload
+     *
+     * @return mixed
+     */
     public function process($payload /* ...$args */)
     {
         $args = array_slice(func_get_args(), 1);
@@ -28,6 +44,9 @@ final class Pipeline
         }, $payload);
     }
 
+    /**
+     * @return mixed
+     */
     public function __invoke(/* ...$args */)
     {
         return call_user_func_array([$this, 'process'], func_get_args());
