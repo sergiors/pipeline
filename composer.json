@@ -1,0 +1,25 @@
+{
+    "name": "sergiors/pipeline",
+    "authors": [
+        {
+            "name": "Sérgio Rafael Siqueira",
+            "email": "sergio@inbep.com.br"
+        }
+    ],
+    "require": {
+        "php": "^5.5|^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sergiors\\Pipeline\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sergiors\\Pipeline\\Tests\\": "tests"
+        }
+    }
+}
