@@ -1,5 +1,6 @@
 {
     "name": "sergiors/pipeline",
+    "description": "Compose sequence of operations, immutable without side-effects",
     "type": "library",
     "license": "MIT",
     "authors": [

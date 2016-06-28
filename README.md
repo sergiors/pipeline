@@ -1,5 +1,17 @@
 Pipeline
 --------
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sergiors/pipeline/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/sergiors/pipeline/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/sergiors/pipeline/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/sergiors/pipeline/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/sergiors/pipeline/badges/build.png?b=master)](https://scrutinizer-ci.com/g/sergiors/pipeline/build-status/master)
+
+Install
+-------
+```bash
+composer require sergiors/pipeline
+```
+
+How to use
+----------
 
 ```php
 use Sergiors\Pipeline\Pipeline;
