@@ -29,6 +29,11 @@ $container = ...;
 $pipeline(10, $container);
 ```
 
+Motivation
+----------
+[Collection Pipeline](http://martinfowler.com/articles/collection-pipeline/)
+
+
 License
 -------
 MIT
