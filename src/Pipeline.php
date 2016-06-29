@@ -45,6 +45,34 @@ final class Pipeline
     }
 
     /**
+     * @param callable $fn
+     * @param array    $args
+     *
+     * @return Pipeline
+     */
+    public function __call(callable $fn, array $args)
+    {
+        $ks = (new self())
+            ->pipe(new Filter(function ($x) {
+                return '%' === $x;
+            }))
+            ->pipe(function ($xs) {
+                return array_keys($xs) ?: [];
+            })
+            ->process($args);
+
+        return $this->pipe(function ($payload) use ($fn, $args, $ks) {
+            if ([] === $ks) {
+                return call_user_func_array($fn, array_merge($args, [$payload]));
+            }
+
+            return call_user_func_array($fn, array_replace($args, [
+                $ks[0] => $payload
+            ]));
+        });
+    }
+
+    /**
      * @return mixed
      */
     public function __invoke(/* ...$args */)

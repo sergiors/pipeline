@@ -20,6 +20,22 @@ class PipelineTest extends \PHPUnit_Framework_TestCase
             ->pipe(new Foo());
 
         $this->assertEquals('pipebarfoo', $pipeline('pipe'));
+
+
+    }
+
+    /**
+     * @test
+     */
+    public function shouldCallPhpFuncs()
+    {
+        $implode = (new Pipeline())->implode(',', '%');
+        $this->assertEquals('hello,world', $implode(['hello','world']));
+
+        $hello = (new Pipeline())
+            ->strrev()
+            ->strtoupper();
+        $this->assertEquals('DLROW OLLEH', $hello('hello world'));
     }
 
     /**

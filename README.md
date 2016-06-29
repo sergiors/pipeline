@@ -58,6 +58,16 @@ $users = [...];
 print_r($getOrgs($users));
 ```
 
+Or call native functions.
+```php
+use Sergiors\Pipeline\Pipelne;
+
+$implode = (new Pipeline())->implode(',', '%');
+echo $implode(['a', 'b']); // => a,b
+```
+
+`%` is the placeholder for payload. If you don't set the placeholder, the payload will be last argument.
+
 Motivation
 ----------
 [Collection Pipeline](http://martinfowler.com/articles/collection-pipeline/)
