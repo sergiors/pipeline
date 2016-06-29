@@ -62,8 +62,10 @@ Or call native functions.
 ```php
 use Sergiors\Pipeline\Pipelne;
 
-$implode = (new Pipeline())->implode(',', '%');
-echo $implode(['a', 'b']); // => a,b
+$implodeUpper = (new Pipeline())
+    ->implode(',', '%')
+    ->strtoupper();
+echo $implodeUpper(['a', 'b']); // => A,B
 ```
 
 `%` is the placeholder for payload. If you don't set the placeholder, the payload will be last argument.
