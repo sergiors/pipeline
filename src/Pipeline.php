@@ -37,10 +37,10 @@ final class Pipeline
      */
     public function process($payload /* ...$args */)
     {
-        $args = array_slice(func_get_args(), 1);
+        $rest = array_slice(func_get_args(), 1);
 
-        return array_reduce($this->callbacks, function ($payload, $callback) use ($args) {
-            return call_user_func_array($callback, array_merge([$payload], $args));
+        return array_reduce($this->callbacks, function ($payload, $callback) use ($rest) {
+            return call_user_func_array($callback, array_merge([$payload], $rest));
         }, $payload);
     }
 
