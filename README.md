@@ -55,7 +55,7 @@ $getOrgs = (new Pipeline())
 // an array with OrgInterface and UserInterface objects
 $users = [...];
 
-print_r($getOrgs($users);
+print_r($getOrgs($users));
 ```
 
 Motivation
