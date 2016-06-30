@@ -8,6 +8,11 @@ namespace Sergiors\Pipeline;
 final class Pipeline
 {
     /**
+     * Placeholder
+     */
+    const _ = '%';
+
+    /**
      * @var callable[]
      */
     private $callbacks;
@@ -54,7 +59,7 @@ final class Pipeline
     {
         $ks = (new self())
             ->pipe(new Filter(function ($x) {
-                return '%' === $x;
+                return self::_ === $x;
             }))
             ->pipe(function ($xs) {
                 return array_keys($xs) ?: [];

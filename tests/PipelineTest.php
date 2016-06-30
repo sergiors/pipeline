@@ -29,7 +29,7 @@ class PipelineTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldCallPhpFuncs()
     {
-        $implode = (new Pipeline())->implode(',', '%')->strtoupper();
+        $implode = (new Pipeline())->implode(',', Pipeline::_)->strtoupper();
         $this->assertEquals('HELLO,WORLD', $implode(['hello','world']));
 
         $hello = (new Pipeline())

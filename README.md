@@ -63,12 +63,12 @@ Or call native functions.
 use Sergiors\Pipeline\Pipelne;
 
 $implodeUpper = (new Pipeline())
-    ->implode(',', '%')
+    ->implode(',', Pipeline::_)
     ->strtoupper();
 echo $implodeUpper(['a', 'b']); // => A,B
 ```
 
-`%` is the placeholder for payload. If you don't set the placeholder, the payload will be last argument.
+`Pipeline::_` is the placeholder for payload. If you don't set the placeholder, the payload will be last argument.
 
 Motivation
 ----------
