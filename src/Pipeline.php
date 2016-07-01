@@ -61,9 +61,7 @@ final class Pipeline
             ->pipe(new Filter(function ($x) {
                 return self::_ === $x;
             }))
-            ->pipe(function ($xs) {
-                return array_keys($xs) ?: [];
-            })
+            ->pipe('array_keys')
             ->process($args);
 
         return $this->pipe(function ($payload) use ($fn, $args, $ks) {
