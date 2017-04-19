@@ -21,8 +21,6 @@ class PipelineTest extends TestCase
             ->pipe(new Foo());
 
         $this->assertEquals('pipebarfoo', $pipeline('pipe'));
-
-
     }
 
     /**
@@ -75,5 +73,23 @@ class PipelineTest extends TestCase
         $this->assertCount(2, $xs);
         $this->assertEquals('PHP Rocks!', $xs[0]);
         $this->assertEquals('How to use Pipeline', $xs[1]);
+    }
+
+    /**
+     * @test
+     */
+    public function shouldAlwaysPassSecoundArg()
+    {
+        $pipeline = (new Pipeline())
+            ->pipe(function ($x, $y) {
+                $this->assertEquals(10, $y);
+                return $x + $y;
+            })
+            ->pipe(function ($x, $y) {
+                $this->assertEquals(10, $y);
+                return $x + $y;
+            });
+
+        $pipeline(1, 10);
     }
 }
