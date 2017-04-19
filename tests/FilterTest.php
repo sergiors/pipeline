@@ -2,11 +2,12 @@
 
 namespace Sergiors\Pipeline\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sergiors\Pipeline\Pipeline;
 use Sergiors\Pipeline\Filter;
 use Sergiors\Pipeline\Map;
 
-class FilterTest extends \PHPUnit_Framework_TestCase
+class FilterTest extends TestCase
 {
     /**
      * @test

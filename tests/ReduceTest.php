@@ -2,10 +2,11 @@
 
 namespace Sergiors\Pipeline\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sergiors\Pipeline\Pipeline;
 use Sergiors\Pipeline\Reduce;
 
-class ReduceTest extends \PHPUnit_Framework_TestCase
+class ReduceTest extends TestCase
 {
     /**
      * @test

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Sergiors\Pipeline;
 
 /**
@@ -8,32 +10,23 @@ namespace Sergiors\Pipeline;
 final class Reduce
 {
     /**
-     * @var \Closure
+     * @var callable
      */
-    private $fn;
+    private $callable;
 
     /**
      * @var mixed
      */
     private $initial;
 
-    /**
-     * @param \Closure $fn
-     * @param null     $initial
-     */
-    public function __construct(\Closure $fn, $initial = null)
+    public function __construct(callable $callable, $initial = null)
     {
-        $this->fn = $fn;
+        $this->callable = $callable;
         $this->initial = $initial;
     }
 
-    /**
-     * @param mixed $payload
-     *
-     * @return mixed
-     */
     public function __invoke($payload)
     {
-        return array_reduce($payload, $this->fn, $this->initial);
+        return array_reduce($payload, $this->callable, $this->initial);
     }
 }

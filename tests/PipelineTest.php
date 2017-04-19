@@ -2,11 +2,12 @@
 
 namespace Sergiors\Pipeline\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sergiors\Pipeline\Pipeline;
 use Sergiors\Pipeline\Tests\Fixture\Bar;
 use Sergiors\Pipeline\Tests\Fixture\Foo;
 
-class PipelineTest extends \PHPUnit_Framework_TestCase
+class PipelineTest extends TestCase
 {
     /**
      * @test
@@ -26,24 +27,11 @@ class PipelineTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     */
-    public function shouldCallPhpFuncs()
-    {
-        $implode = (new Pipeline())->implode(',', Pipeline::_)->strtoupper();
-        $this->assertEquals('HELLO,WORLD', $implode(['hello','world']));
-
-        $hello = (new Pipeline())
-            ->strrev()
-            ->strtoupper();
-        $this->assertEquals('DLROW OLLEH', $hello('hello world'));
-    }
-
-    /**
-     * @test
+     * @expectedException \Throwable
      */
     public function shouldSkipNonCallable()
     {
-        $pipeline = (new Pipeline([new Bar()]))
+        $pipeline = (new Pipeline(new Bar()))
             ->pipe(new Foo());
 
         $this->assertEquals('pipefoo', $pipeline('pipe'));

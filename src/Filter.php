@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Sergiors\Pipeline;
 
 /**
@@ -8,25 +10,17 @@ namespace Sergiors\Pipeline;
 final class Filter
 {
     /**
-     * @var \Closure
+     * @var callable
      */
-    private $fn;
+    private $callable;
 
-    /**
-     * @param \Closure $fn
-     */
-    public function __construct(\Closure $fn)
+    public function __construct(callable $callable)
     {
-        $this->fn = $fn;
+        $this->callable = $callable;
     }
 
-    /**
-     * @param mixed $payload
-     *
-     * @return mixed
-     */
     public function __invoke($payload)
     {
-        return array_filter($payload, $this->fn);
+        return array_filter($payload, $this->callable);
     }
 }

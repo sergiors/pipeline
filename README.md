@@ -16,7 +16,7 @@ How to use
 ```php
 use Sergiors\Pipeline\Pipeline;
 
-$pipeline = (new Pipeline())
+$pipeline = (new Pipeline)
     ->pipe(function ($payload) {
         return $payload + 2;
     })
@@ -29,7 +29,7 @@ echo $pipeline(10); // => 24
 ```
 
 ```php
-$pipeline = (new Pipeline())
+$pipeline = (new Pipeline)
     ->pipe(function ($payload, $container) {
         ...
     })
@@ -47,7 +47,7 @@ You can use `Sergiors\Pipeline\Reduce`, `Sergiors\Pipeline\Filter` and `Sergiors
 use Sergiors\Pipeline\Pipeline;
 use Sergiors\Pipeline\Filter;
 
-$getOrgs = (new Pipeline())
+$getOrgs = (new Pipeline)
     ->pipe(new Filter(function ($org) {
         return $org instanceof OrgInterface;
     }));
@@ -57,18 +57,6 @@ $users = [...];
 
 print_r($getOrgs($users));
 ```
-
-Or call native functions.
-```php
-use Sergiors\Pipeline\Pipelne;
-
-$implodeUpper = (new Pipeline())
-    ->implode(',', Pipeline::_)
-    ->strtoupper();
-echo $implodeUpper(['a', 'b']); // => A,B
-```
-
-`Pipeline::_` is the placeholder for payload. If you don't set the placeholder, the payload will be last argument.
 
 Motivation
 ----------
